@@ -1,0 +1,15 @@
+<nav class="navbar" *ngIf="isLogin">
+  <div class="logo">MyApp</div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="nav-buttons">
+    <a class="btn-outline">Login</a>
+    <a class="btn">Sign Up</a>
+    <a class="btn btn-danger" (click)="logout()">Logout</a>
+  </div>
+</nav>
+<router-outlet />

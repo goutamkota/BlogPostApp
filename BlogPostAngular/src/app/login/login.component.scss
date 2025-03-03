@@ -1,0 +1,95 @@
+/* Login Container */
+.login-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Input Fields */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-color: #667eea;
+}
+
+/* Login Button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #667eea;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #5648a2;
+}
+
+/* Google Login Button */
+// .g_id_signin {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background: white;
+//   padding: 10px;
+//   border-radius: 5px;
+//   margin-top: 15px;
+//   cursor: pointer;
+//   border: 1px solid #ccc;
+//   transition: 0.3s;
+// }
+
+// .g_id_signin img {
+//   width: 20px;
+//   margin-right: 10px;
+// }
+
+// .g_id_signin:hover {
+//   background: #f7f7f7;
+// }
+
+/* Register Link */
+.register {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register a:hover {
+  text-decoration: underline;
+}
