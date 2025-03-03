@@ -1,2 +1,2 @@
-# BlogPostAngularTest - 1
+# BlogPost
 Testing to build this application with authentication
