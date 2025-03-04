@@ -6,16 +6,11 @@ import * as passport from 'passport'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
-  app.use(session({
-    secret: 'hcgfytuyftctjuygiftcfjtuyigtf',
-    saveUninitialized: false,
-    resave: false,
-    cookie: {
-      maxAge: 360000,
-    }
-  }))
-  app.use(passport.initialize())
-  app.use(passport.session())
+  app.enableCors({
+    origin: 'http://localhost:4200', // Allow Angular frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+  })
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

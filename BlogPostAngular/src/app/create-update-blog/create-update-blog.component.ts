@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-create-update-blog',
@@ -10,34 +11,44 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './create-update-blog.component.scss'
 })
 export class CreateUpdateBlogComponent {
-  blog = { title: '', content: '', author: '' };
-  isEditMode = false;
+  blog: any = {
+    title: '',
+    content: ''
+  }
+  isEditMode: boolean = false;
   blogId: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private appService: AppService) {}
 
   ngOnInit() {
     this.blogId = this.route.snapshot.paramMap.get('id');
     if (this.blogId) {
       this.isEditMode = true;
-      const allBlogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-      this.blog = allBlogs.find((blog:any) => blog.id == this.blogId) || this.blog;
+      this.blog = this.appService.sharePost
     }
+  }
+
+  updateBlog() {
+    this.appService.updatePost(this.blogId, this.blog).subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.error(err)
+    })
+  }
+
+  createBlog() {
+    this.appService.savePost(this.blog).subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.error(err)
+    })
   }
 
   saveBlog() {
-    let allBlogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-
     if (this.isEditMode) {
-      const index = allBlogs.findIndex((blog:any) => blog.id == this.blogId);
-      allBlogs[index] = this.blog;
+      this.updateBlog()
     } else {
-      // this.blog.author = sessionStorage.getItem('email');
-      // this.blog.id = Date.now();
-      allBlogs.push(this.blog);
+      this.createBlog()
     }
-
-    localStorage.setItem('blogs', JSON.stringify(allBlogs));
     this.router.navigate(['/dashboard']);
   }
+
 }

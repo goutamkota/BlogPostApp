@@ -14,6 +14,10 @@ export class PostsService {
     return await this.blogRepository.findOne({ where: { id } });
   }
 
+  async getAllPosts(): Promise<Blog[]> {
+    return await this.blogRepository.find()
+  }
+
   async getPostsByUser(userEmail: string): Promise<Blog[]> {
     return await this.blogRepository.find({ where: { userEmail } });
   }

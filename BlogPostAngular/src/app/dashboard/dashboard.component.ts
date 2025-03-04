@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,16 +10,19 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
-  blogs: any = []; // Store user's blogs
+  blogs: any = [];
 
-  constructor(private router: Router) {}
+  constructor(public appService: AppService) { }
 
   ngOnInit() {
-    // Mock API Call - Replace with real API
-    const allBlogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-    const userEmail = sessionStorage.getItem('email');
-
-    // Filter blogs by logged-in user
-    this.blogs = allBlogs.filter((blog:any) => blog.author === userEmail);
+    this.fetchAllPosts()
+  }
+  fetchAllPosts() {
+    this.appService.getAllPosts()
+      .subscribe({
+        next: (res) => this.blogs = res,
+        error: (err) => console.error(err)
+      });
+    console.log(this.blogs)
   }
 }

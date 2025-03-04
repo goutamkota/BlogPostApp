@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from './auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
-  // providers:[ActivatedRouteSnapshot],
+  imports: [RouterOutlet, CommonModule, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

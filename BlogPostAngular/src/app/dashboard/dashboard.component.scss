@@ -3,8 +3,26 @@
   padding: 20px;
 }
 
+.blog-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .create-btn {
   margin-bottom: 20px;
+}
+
+.make-g {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .blog-card {

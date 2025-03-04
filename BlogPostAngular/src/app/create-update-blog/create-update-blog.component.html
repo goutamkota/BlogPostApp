@@ -1,8 +1,8 @@
 <div class="blog-form">
   <h2>{{ isEditMode ? 'Edit Blog' : 'Create a New Blog' }}</h2>
 
-  <input type="text" [(ngModel)]="blog.title" placeholder="Blog Title" required>
-  <textarea [(ngModel)]="blog.content" placeholder="Write your blog content..." required></textarea>
+  <input type="text" [(ngModel)]="blog.title" placeholder="Blog Title">
+  <textarea [(ngModel)]="blog.content" placeholder="Write your blog content..."></textarea>
 
   <button class="btn submit-btn" (click)="saveBlog()">
       {{ isEditMode ? 'Update Blog' : 'Create Blog' }}

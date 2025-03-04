@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Req, Query } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -7,17 +7,22 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  // Public endpoint: Get details of a single post
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   async getPost(@Param('id') id: string) {
     return this.postsService.getPostById(id);
   }
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  async getUserPosts(@Req() req) {
-    const userEmail = req.user.email;
+  async getUserPosts(@Query('email') userEmail: string) {
     return this.postsService.getPostsByUser(userEmail);
+  }
+
+  @Get()
+  @UseGuards(JwtAuthGuard)
+  async getPosts() {
+    return this.postsService.getAllPosts();
   }
 
   @Post()
