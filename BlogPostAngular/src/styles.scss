@@ -12,7 +12,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #8193e2, #a37cc9);
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .btn, .btn-outline {

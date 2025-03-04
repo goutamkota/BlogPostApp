@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,16 @@ import { Observable } from 'rxjs';
 export class AppService {
   token = sessionStorage.getItem('token');
   sharePost: any
+  public details$ = new BehaviorSubject<any>(null);
+
+  setDetails(details: any) {
+    this.details$.next(details);
+    sessionStorage.setItem('user', JSON.stringify(details));
+  }
+
+  getDetails() {
+    return this.details$.value || JSON.parse(sessionStorage.getItem('user') || 'null');
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +35,9 @@ export class AppService {
 
   savePost(body: any) {
     return this.http.post('http://localhost:3000/api/posts', body)
+  }
+
+  findOrCreate(body:any) {
+    return this.http.post('http://localhost:3000/api/auth', body)
   }
 }

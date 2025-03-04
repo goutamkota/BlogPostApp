@@ -1,11 +1,12 @@
 @if (blogs.length > 0) {
   <div class="blog-list">
-    <h2>All Blogs</h2>
-
-    <div *ngFor="let blog of blogs" class="blog-card">
+    <h2>All My Blogs</h2>
+    <div class="wrapper">
+      <div *ngFor="let blog of blogs" class="blog-card">
         <h3>{{ blog.title }}</h3>
         <p>{{ blog.content }}...</p>
         <button class="btn edit-btn pr-2" (click)="appService.sharePost = blog" [routerLink]="['/create-blog', blog.id]">Edit</button>
+      </div>
     </div>
   </div>
 } @else {

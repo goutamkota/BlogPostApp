@@ -8,9 +8,9 @@ export class User {
     @Column()
     email: string
 
-    @Column()
-    displayName: string
+    @Column({ nullable: true })
+    displayName?: string
 
-    @Column()
-    displayImage: string
+    @Column({ nullable: true })
+    displayImage?: string
 }

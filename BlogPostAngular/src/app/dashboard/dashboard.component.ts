@@ -23,6 +23,5 @@ export class DashboardComponent implements OnInit {
         next: (res) => this.blogs = res,
         error: (err) => console.error(err)
       });
-    console.log(this.blogs)
   }
 }

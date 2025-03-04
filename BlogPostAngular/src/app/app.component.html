@@ -6,9 +6,13 @@
     <li><a [routerLink]="['/create-blog']">Post Blog</a></li>
   </ul>
   <div class="nav-buttons">
-    <a class="btn-outline">Login</a>
-    <a class="btn">Sign Up</a>
-    <a class="btn btn-danger" (click)="logout()">Logout</a>
+    @if(pic){
+      <img [src]="pic" alt="profile pic" style="border-radius: 0.3rem;" width="40">
+      <a class="btn btn-danger" (click)="signOut()">Logout</a>
+    } @else {
+      <a class="btn-outline">Login</a>
+      <a class="btn">Sign Up</a>
+    }
   </div>
 </nav>
 <router-outlet />

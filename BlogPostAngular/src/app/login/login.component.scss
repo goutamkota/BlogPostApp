@@ -22,6 +22,7 @@ h2 {
 /* Input Fields */
 .input-group {
   margin-bottom: 15px;
+  width: -webkit-fill-available;
 }
 
 .input-group input {
@@ -54,29 +55,6 @@ h2 {
 .btn:hover {
   background: #5648a2;
 }
-
-/* Google Login Button */
-// .g_id_signin {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background: white;
-//   padding: 10px;
-//   border-radius: 5px;
-//   margin-top: 15px;
-//   cursor: pointer;
-//   border: 1px solid #ccc;
-//   transition: 0.3s;
-// }
-
-// .g_id_signin img {
-//   width: 20px;
-//   margin-right: 10px;
-// }
-
-// .g_id_signin:hover {
-//   background: #f7f7f7;
-// }
 
 /* Register Link */
 .register {

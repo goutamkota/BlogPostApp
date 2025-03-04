@@ -18,8 +18,6 @@ export class JwtAuthGuard implements CanActivate {
     try {
       const decoded = jwt.decode(token, { complete: true })?.payload;
       if (!decoded) throw new UnauthorizedException('Invalid Google token');
-      const validate = await this.authService.validateUser(decoded)
-      if(!validate) throw new UnauthorizedException('Invalid Authentication')
       request.user = decoded;
       return true;
     } catch (error) {
